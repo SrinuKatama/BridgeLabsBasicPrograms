@@ -7,8 +7,8 @@ public class TwoDArray {
 	public static void main(String[] args) 
 	{
 		Utility util = new Utility();
-		             // util.twod();
-		util.twoddouble();
+		             
+		     util.twoddouble();
 
 			}
 

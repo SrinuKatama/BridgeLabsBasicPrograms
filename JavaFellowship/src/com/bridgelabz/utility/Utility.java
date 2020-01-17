@@ -1,5 +1,6 @@
 package com.bridgelabz.utility;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Utility 
@@ -185,21 +186,158 @@ public static void twoddouble()
 	}
 }
 
+//..................SumofTriplets.........................//
+
+public static void touple()
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("please enter size of array");
+	int n=sc.nextInt();
+	int ar[]=new int[n];
+	for(int i=0;i<=n-1;i++)
+	{
+		ar[i]=sc.nextInt();
+	}
+	for(int i=0;i<=n-2;i++)
+	{
+		for(int j=0;j<=n-1;j++)
+		{
+			for(int k=0;k<=n;k++)
+			{
+				if(ar[i]+ar[j]+ar[k] == 0)
+				{
+					System.out.println("The Triplets are :"+ar[i]+","+ar[j]+","+ar[k]);
+				}
+				
+			}
+		}
+	}
+	
+	
+	System.out.println("no triplets are present ");
+	
+}
+
+//........................Distance of points..................//
 
 
+public static void DistanceOfPoints() {
+	
+	
+	Scanner sc=new Scanner(System.in);
+	System.out.println(" Enter the  X value");
+	int x=sc.nextInt();
+	System.out.println("Enter the Y value ");
+	int y=sc.nextInt();
+	
+	
+	
+	double d=((x*x)+(y*y));
+	
+	System.out.println("Distance between the points is: "+Math.sqrt(d));
+	
+	
+}
 
 
+//..............Quadratic.......................//
+
+public static void Quadratics() 
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter the value of a");
+	int a=sc.nextInt();
+	System.out.println("Enter the value of b");
+	int b=sc.nextInt();
+	System.out.println("Enter the Value of c");
+	int c=sc.nextInt();
+	
+	
+	double delta=(b*b)-(4*a*c);
+	
+	double x1=(-b+Math.sqrt(delta))/(2*a);
+	double x2=(-b-Math.sqrt(delta))/(2*a);
+	
+	System.out.println("your Quadratic formula for positive sign is " +x1);
+	
+	System.out.println("your Quadratic formula for negative sign is " +x2);
+	
+}
+
+//.............Windchill.............//
 
 
+public static void Wind()
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter the Tempertate in Fahrenheit ");
+	int t=sc.nextInt();
+	System.out.println("Enter the  miles per hour ");
+	int v=sc.nextInt();
+	
+	double W=35.74+(0.6215*t)+((0.4275*t)-35.75)*(Math.pow(v, 0.16));
+	if(t<50 && (v<120 && v>3))
+	{
+	System.out.println(W);
+	}
+	
+	else
+	{
+	System.out.println("enter correct values");
+	}
+}
+//...................Gambler..................//
 
+public static void gamblers() 
+{
+	Scanner sc=new Scanner(System.in); 
+	System.out.println("enter the goal ");
+	int goal=sc.nextInt();//get the value from the user to raech the goal state
+	Random rn=new Random();
+	//int goal=10;
+	int win=0;
+	int loose=0;
+	int toss=0;
+	int amount=0;
+	
+	while(amount<goal) {	
+		toss++;
+		System.out.println("Enter your betting number 1 to 6");
+		int b=sc.nextInt();
+		
+		System.out.println("press any key to toss ");
+		sc.nextLine();
+		int r=rn.nextInt(6)+1;
+		System.out.println(r);
+		if(b==r) {
+			win++;
+			amount=amount+r;
+			System.out.println(amount);
+			if(amount>goal) {
+				amount=amount-r;
+				System.out.println(amount);
+			}
+		}	
+		else {
+			loose++;
+		}
+	}
+	
+int pw=(win*100)/toss;
+int pl=(loose*100/toss);
+	
+	
+	System.out.println("win percentage out of toss is "+pw);
+	System.out.println("loose percentage out of toss "+pl);
+	
+	// show  user to all the values 
+	System.out.println("win==========>"+win);
+	System.out.println("loose========>"+loose);
+	System.out.println("amount========>"+amount);
+	System.out.println("toss===========>"+toss);
+	
 
-
-
-
-
-
-
-
+}
 
 
 
