@@ -1,5 +1,7 @@
 package com.bridgelabz.utility;
 
+import java.time.Instant;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -339,10 +341,371 @@ int pl=(loose*100/toss);
 
 }
 
+//..............coupan............................
 
 
+public static void coupan() 
+{
+	
+	Scanner sc=new Scanner(System.in);
+	System.out.println("enter the Size of the array");
+	int n=sc.nextInt();
+	
+	int a[]=new int[n];
+	
+	for(int i=0;i<a.length;i++)
+	{
+		
+		Random rn=new Random();
+		int r=rn.nextInt(9);//it generate the random number
+		a[i]=r;
+		
+	 for (int j=0;j<i;j++)
+     {
+         if (a[i] == a[j])//if the jvm generate number is already present. i value is getting decreased
+         {
+             i--;
+         }
+     }			
+	}
+	
+	for(int i=0;i<a.length;i++) 
+	{
+		System.out.print(a[i]);
+	}
+}
+//...........stopwatch.............
+
+
+
+public static void stop()
+{
+	
+	Scanner sc=new Scanner(System.in);
+	
+	long Start=0,end=0;
+	
+	boolean flag=false;
+	
+	while(true) {
+		
+		System.out.println("Enter 0 for start the watch or Enter 1 for stop the watch" );
+		Byte b=sc.nextByte();
+		
+		
+		if(b==0)
+		{
+			Start=Instant.now().toEpochMilli();
+		
+			flag=true;
+		    }
+		
+		   else if(b==1 && flag)
+		   {
+			
+			end=Instant.now().toEpochMilli();
+			break;
+			
+		}
+	}
+	
+	System.out.println((end-Start)/1000+" seconds ");
 
 }
+
+//...........Tic toe game...........................
+
+
+
+
+//................BinarySearch...........................
+
+
+
+public static int binary(int key, int[] ar)
+{
+	int low=0,high=ar.length-1;
+	int mid=(low+high)/2;
+	
+	while(low<=high)
+	{
+		if(key==ar[mid])
+		{
+			return mid;
+		}
+		
+		else if( ar[mid]<key)
+		{
+			low=mid+1;
+		}
+		else
+		{
+			high=mid-1;
+		}
+	
+	}
+	
+	return -1;
+	
+}
+
+
+//.............BoubleSort..............
+
+
+public static void bubble()
+{
+   Scanner sc=new Scanner(System.in);
+   System.out.println("plz enter size of an array");
+     int n=sc.nextInt();
+     int ar[]=new int [n];
+     System.out.println("plz enter array elements");
+     for(int i=0;i<n;i++)
+     {
+    	 ar[i]=sc.nextInt();
+     }
+     
+     int i=0,j=0,temp;
+     for(i=0;i<n-1;i++)
+     {
+	for(j=0;j<n-1-i;j++)
+     {
+		if(ar[j]>ar[j+1])
+		{
+			temp=ar[j];
+			ar[j]=ar[j+1];
+			ar[j+1]=temp;
+			
+		}
+    	 
+     }
+	
+     }
+     System.out.println("After sorting :");
+
+ 	for(int i1=0;i1<ar.length;i1++)
+ 	{
+ 		System.out.println(ar[i1]+" ");
+ 		
+ 	}
+}
+
+
+//............InsertionSort..................
+
+public static void insertion()
+{
+	Scanner sc=new Scanner(System.in);
+	   System.out.println("plz enter size of an array");
+	     int n=sc.nextInt();
+	     int ar[]=new int [n];
+	     System.out.println("plz enter array elements");
+	     for(int i=0;i<n;i++)
+	     {
+	    	 ar[i]=sc.nextInt();
+	     }
+	     int item;
+	     int i=0,j=0;
+	     for( i=1;i<=ar.length-1;i++)
+	     {
+	    	 item=ar[i];
+	    	 for( j=i-1;j>=0;j--)
+	    	 {
+	    		 if(ar[j]>item)
+	    		 {
+	    			ar[j+1]=ar[j]; 
+	    		 }
+	    	 }
+	    	 ar[j+1]=item;
+	     }
+	     System.out.println("After searching :");
+	     for(int k=0;k<=ar.length-1;k++)
+	     {
+	    	System.out.print(ar[i]+" ");
+	     }    
+	         
+}
+
+	//...............MergeSort............
+
+
+public static void merge(int ar[],int low,int mid,int high)
+{
+	int n1=mid-low+1;
+	int n2=high-mid;
+	
+	int L[]=new int[n1];
+	int R[]=new int[n2];
+	
+	for (int i=0; i<n1; ++i) 
+        L[i] = ar[low + i]; 
+    for (int j=0; j<n2; ++j) 
+        R[j] = ar[mid + 1+ j];
+    
+    
+    int i = 0, j = 0; 
+    
+    int k = low; 
+    while (i < n1 && j < n2) 
+    { 
+        if (L[i] <= R[j]) 
+        { 
+            ar[k] = L[i]; 
+            i++; 
+        } 
+        else
+        { 
+            ar[k] = R[j]; 
+            j++; 
+        } 
+        k++; 
+    } 
+
+    while (i < n1) 
+    { 
+        ar[k] = L[i]; 
+        i++; 
+        k++; 
+    } 
+
+    while (j < n2) 
+    { 
+        ar[k] = R[j]; 
+        j++; 
+        k++; 
+    } 
+} 
+    
+ public void sort(int ar[],int low ,int high)
+{
+	if(low<high)
+	{
+    int mid=low+high/2;
+	sort(ar,low,mid);
+	sort(ar,mid+1,high);
+	merge(ar,low,mid,high);
+	}
+}
+ public static void printArray(int ar[]) 
+ { 
+     int n = ar.length; 
+     for (int i=0; i<n; ++i) 
+         System.out.print(ar[i] + " "); 
+     System.out.println(); 
+ } 
+
+
+ 
+ //............Anagram.............
+ 
+ 
+ public static boolean anagram(String string, String string2)
+ {
+	 String s1="listen";
+	 String s2="silent";
+	 
+	 char[] ar1=s1.toCharArray();
+	 char[]  ar2=s2.toCharArray();
+	 
+	 Arrays.sort(ar1);
+	 Arrays.sort(ar2);
+	 
+	 Boolean result=Arrays.equals(ar1,ar2);
+	 
+	 if(result==true)
+	 {
+		 return true;
+	 }
+	 else 
+	 {
+		 return false;
+	 }
+ }
+ 
+ 
+ 
+ //...............primenumber.............
+ 
+ 
+  public static void prime() 
+  {
+	 Scanner sc=new Scanner(System.in);
+	 int n=sc.nextInt();
+	 int ar1[]=new int[n];
+	 if(n<=100)
+	 {
+		 
+		 int i=0,j=0,s;
+		for( i=2;i<n;i++)
+		
+		 {
+			s=0;
+			 for(j=2;j<i;j++)
+			 {
+				 if(i%j==0)
+				 {
+					 s=1;
+				 }
+				 break;
+			 }
+			 if(s==0)
+			 {
+				 
+				// System.out.println(i);
+				 ar1[i]=i;
+				 
+			 }
+		 }
+	 }
+	 else
+	 {
+		 System.out.println("enter no. between range");
+	 }
+	
+     
+  
+ 
+	 for(int i=0;i<ar1.length;i++)
+
+	 {
+	 
+		 System.out.print(ar1[i]+ " ");
+	 }
+	 
+	 
+		 
+ 
+ 
+ //..................Primeno's that are anagram.......
+ 
+ 
+  
+                        
+  
+ 
+	     for(int i=0;i<=ar1.length-2;i++)
+	     {
+	    	 for(int j=1;j<=ar1.length-1;j++)
+	    	 {
+	    		 if(i!=j )  
+	    		 {
+	    			if(Utility.anagram(String.valueOf(i),String.valueOf(i)))
+	    			{
+	    				System.out.println("Anagram primes are :");
+	    				System.out.println(i);
+	    			}
+	    			 
+	    		 }
+	    		 
+	    	 }
+	     }
+		
+  }	 
+		 
+ }
+ 
+
+
 
 
 
