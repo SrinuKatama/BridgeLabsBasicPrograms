@@ -599,7 +599,7 @@ public static void merge(int ar[],int low,int mid,int high)
  //............Anagram.............
  
  
- public static boolean anagram(String string, String string2)
+ public static void anagram()
  {
 	 String s1="listen";
 	 String s2="silent";
@@ -614,11 +614,11 @@ public static void merge(int ar[],int low,int mid,int high)
 	 
 	 if(result==true)
 	 {
-		 return true;
+		 System.out.println("given strings are anagrams ");
 	 }
 	 else 
 	 {
-		 return false;
+		 System.out.println("given strings are not anagrams ");;;
 	 }
  }
  
@@ -651,9 +651,9 @@ public static void merge(int ar[],int low,int mid,int high)
 			 if(s==0)
 			 {
 				 
-				// System.out.println(i);
-				 ar1[i]=i;
+				 System.out.println(i);
 				 
+			
 			 }
 		 }
 	 }
@@ -662,47 +662,166 @@ public static void merge(int ar[],int low,int mid,int high)
 		 System.out.println("enter no. between range");
 	 }
 	
+	
      
   
- 
-	 for(int i=0;i<ar1.length;i++)
-
-	 {
-	 
-		 System.out.print(ar1[i]+ " ");
-	 }
-	 
-	 
-		 
- 
- 
- //..................Primeno's that are anagram.......
- 
- 
+  }
   
-                        
   
- 
-	     for(int i=0;i<=ar1.length-2;i++)
-	     {
-	    	 for(int j=1;j<=ar1.length-1;j++)
-	    	 {
-	    		 if(i!=j )  
-	    		 {
-	    			if(Utility.anagram(String.valueOf(i),String.valueOf(i)))
-	    			{
-	    				System.out.println("Anagram primes are :");
-	    				System.out.println(i);
-	    			}
-	    			 
-	    		 }
-	    		 
-	    	 }
-	     }
-		
-  }	 
-		 
+  
+  //.............isPrime.....................
+  
+  
+  public static boolean isPrime(int num)
+  {
+		if (num == 0 || num == 1) 
+		{
+			return false;
+		}
+		for (int i = 2; i < num; i++)
+		{
+			if (num % i == 0)
+			{
+				return false;
+			}
+		}
+		return true;	 
  }
+  
+  
+  
+  //..............isAnagram.........................
+  
+  
+  
+  public static boolean isAnagram(String str1, String str2)
+  {
+		char[] arr1 = str1.toCharArray();
+		char[] arr2 = str2.toCharArray();
+		
+		if (str1.length() != str2.length()) 
+		{
+			return false;
+		} else {
+			Arrays.sort(arr1);
+			Arrays.sort(arr2);
+			if (Arrays.equals(arr1, arr2))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+  
+  
+  //....................isPalindrome...............
+  
+  public static boolean isPalindrome(int num)
+  {
+	  int reverse=0,rem,revnum = 0;
+	  while(num!=0)
+	  {
+	     rem=num%10;
+	     revnum=reverse*10+rem;
+	     num=num/10;
+	  }
+	  if(num == revnum )
+	  {
+		  return true;
+		  
+	  } 
+	  else
+	  {
+		  return false;
+	  }
+	  
+  }
+  
+  
+  
+  //.................Find Number..............
+  
+  
+  public static void findnum(int[] ar)
+  {
+	  Scanner sc=new Scanner(System.in);
+	  int l=0, r=ar.length;
+	  
+	  while(l<=r)
+	  {
+		  int m=l+(r-1)/2;					
+		 
+		  System.out.println("if "+ar[m]+" is your number enter 1 else 0");
+
+			int x=sc.nextInt();
+			if (x==0)
+			{
+				System.out.println("if"+ar[m]+"is less than your number enter 1 else o");
+				int y=sc.nextInt();
+				if (y==1)
+				{
+				      l = m + 1;
+				}
+			  else
+			  {
+			      r = m - 1;
+			  }
+			}
+			else 
+			{
+				System.out.println("number found "+ar[m]);
+			}
+		  
+	  }
+  }
+  
+  
+  //.......................calculator.........
+  
+  public static int calc(int x,int y)
+  {
+	 int c=x+y;
+	  return c;
+  }
+  
+  
+  //................BinaryTesting..........
+  
+  public static int Bin(int n) {
+		
+		int rem,b=0,i=1;
+		while(n>0) {
+		rem=n%2;
+		n/=2;
+		b+=rem*i;
+		i*=10;
+		}
+		return b;
+	}
+  
+  //.............VendingMechine.................
+  
+  
+  public static int vend(int cash)
+  {
+	  int ar[]=new int[]{1000,500,100,50,10,5,2,1};
+	   int count=0;
+	  for(int i=0;i<ar.length;i++)
+	  {
+		  if(cash>=ar[i])
+		  {
+			  int x=cash/ar[i];
+			  cash=cash%ar[i];
+			  count++;
+			  System.out.println("cash reqires:"+x+"*"+ar[i]);
+			  
+		  }
+	  }
+	  return count;
+	  
+  }
+  
+}
  
 
 

@@ -1,0 +1,4 @@
+Jan 23, 2020 11:09:18 AM com.bridgelabz.logger.LoggingMain main
+WARNING: warning
+Jan 23, 2020 11:09:18 AM com.bridgelabz.logger.LoggingMain main
+SEVERE: sever
