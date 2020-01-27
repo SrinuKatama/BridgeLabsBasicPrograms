@@ -1,5 +1,11 @@
 package com.bridgelabz.utility;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Random;
@@ -819,9 +825,35 @@ public static void merge(int ar[],int low,int mid,int high)
 	  }
 	  return count;
 	  
+	  
   }
   
-}
+  //...............readLine................
+  
+  public String readFile(String path) throws IOException
+  {
+	  String s="";
+	  BufferedReader br=new BufferedReader(new FileReader(path));
+	  s=br.readLine();
+	  br.close();
+	  return path;
+	  
+  }
+  public String writeFile(String path,String s) throws IOException
+  {
+	  BufferedWriter br=new BufferedWriter(new FileWriter(path));
+	  br.write(s);
+	  br.close();
+	   return "\n file is written";
+  }
+  
+  }
+  
+  
+  
+  
+ 
+
  
 
 
