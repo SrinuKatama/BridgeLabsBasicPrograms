@@ -7,7 +7,7 @@ public class Queue
 	int rear=-1;
 	int front=0;
 	Object ar[]=new Object[100];
-	private String counter; 
+	
 	 
 	void enque(int x)
 	{
@@ -49,6 +49,7 @@ public class Queue
 	    {
 	    	return ar.length;
 	    }
+	    
       public int service()
       {
     	   

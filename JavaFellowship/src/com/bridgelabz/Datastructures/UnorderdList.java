@@ -1,7 +1,6 @@
 package com.bridgelabz.Datastructures;
 
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
@@ -10,52 +9,46 @@ public class UnorderdList
 {
 
 	public static void main(String[] args) 
-	{
-	 
-		LinkedList<String> ll=new LinkedList<String> ();
-		Utility u=new Utility();
-		String[] ar=null;
+	{ 
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter key string");
+		String s=sc.next();
+		Utility u= new Utility();
+		LinkedList list = new LinkedList();
+		
+		String[] strArr =null;
+
 		try {
-			ar=u.readFile("/home/admin1/Desktop/srinivas/").split(" ");
-			
-			
+			strArr = (u.readFile("/home/admin1/Desktop/sri.txt").split(","));
+
 		} catch (IOException e) {
-			
 			e.printStackTrace();
 		}
 		
-        int size=ar.length;
-		for(int i=0;i<ar.length;i++)
+		for(int i=0;i<strArr.length-1;i++)
 		{
-			ll.add(ar[i]);
+			if(s!=strArr[i])
+			{
+				list.removeAt(i);
+				System.out.println("removed successfully");
+			}
+			else 
+			{
+				list.addAt(i, s);
+				System.out.println("added success fully");
+			}
 		}
-		System.out.println("Linked List :"+ll);
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter key to search");
-		String key = scanner.next();
-		for(int i=0;i<ar.length;i++)
-		{
-			if(key==ar[i])
-			{
-				ll.remove(i);
-				System.out.println("Removed Successfully");
-			}
-			else
-			{
-				ll.add(key);
-				System.out.println("Added Successfully");
-			}
-			
-	     	}
-		   String s2=ar.toString();
+		String s2=strArr.toString();
 		
-		     try {
-				u.writeFile("/home/admin1/Desktop/sri.txt",s2);
-			} catch (IOException e) {
-				
-								e.printStackTrace();
-			}	
-
+	     try {
+			u.writeFile("/home/admin1/Desktop/sri.txt",s2);
+		} catch (IOException e) {
+			
+	    e.printStackTrace();
+		}	
+		
 	}
-
+	
 }
+
+

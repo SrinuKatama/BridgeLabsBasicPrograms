@@ -29,7 +29,5 @@ public class BankingCashCounter {
 	}
 	int bal=q.service();
 	System.out.println("Bank Closing balance is : " +bal );
-	
-	
 }
 }

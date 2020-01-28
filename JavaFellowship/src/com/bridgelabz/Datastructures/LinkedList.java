@@ -2,100 +2,143 @@ package com.bridgelabz.Datastructures;
 
 import java.io.*; 
 
-//Java program to implement 
-//a Singly Linked List 
+
 public class LinkedList
 { 
-
-	Node head; // head of list 
-
-	// Linked list Node. 
-	// This inner class is made static 
-	// so that main() can access it 
-	static class Node { 
-
-		int data; 
-		Node next; 
-
-		// Constructor 
-		Node(int d) 
-		{ 
-			data = d; 
-			next = null; 
-		} 
-	} 
+	Node head;
 	
-	// Method to insert a new node 
-	public static LinkedList insert(LinkedList list, int data) 
-	{ 
-		// Create a new node with given data 
-		Node new_node = new Node(data); 
-		new_node.next = null; 
-
-		// If the Linked List is empty, 
-		// then make the new node as head 
-		if (list.head == null) 
-		{ 
-			list.head = new_node; 
-		} 
-		else { 
-			// Else traverse till the last node 
-			// and insert the new_node there 
-			Node last = list.head; 
-			while (last.next != null)
-             { 
-				last = last.next; 
+	public void add(String data)
+	{
+		Node node=new Node();
+		node.data=data;
+		node.next=null;
+		if(head== null)
+		{
+			head=node;
+		}
+		else
+		{
+			Node n=head;  //temparary node
+			while(n.next!=null)
+			{
+				n=n.next;
+			}
+			n.next=node;
+		}
+	}
+	
+	
+	public void addAtStart(String data)
+	{
+	  
+		Node node=new Node();
+		node.data=data;
+		node.next=null;
+		node.next=head;
+		head=node;
+	}
+	
+	public void addAt(int index,String data)
+	{
+		Node node=new Node();
+		node.data=data;
+		node.next=null;
+		
+		Node n=head;
+		if(index ==0)
+		{
+			addAtStart(data);
+			
+		}
+		else
+		{
+		for(int i=0;i<index-1;i++)
+		{
+			n=n.next;
+		}
+		node.next=n.next;
+		n.next=node;
+		}
+	}
+	
+	public void removeAt(int index)
+	{
+		if(index==0)
+	    {
+			head=head.next;
+	    }
+		else
+		{
+			Node n=head;
+			Node n1=null;
+			for(int i=0;i<index-1;i++)
+			{
+				n=n.next;
+			}
+			n1=n.next;
+			n.next=n1.next;
+			System.out.println("deleted item :"+n1.data);
+		}
+	}
+	
+	public void show()
+	{
+		Node node=head;
+		while(node.next!=null)
+		{
+			System.out.println(node.data);
+			node=node.next;
+		}
+		System.out.println(node.data);
+	}
+   
+    	public int searchNode( String key, int size) 
+    	{
+    		
+			boolean isFound = false;
+			int counter = -1;
+			Node n = head;
+			while (n.next != null) {
+				counter++;
+				if (n.data==key) {
+					isFound = true;
+					break;
+				}
+				n = n.next;
+			}
+			
+			if (isFound)
+			{
+				System.out.println("key found ");
+				removeAt(counter);
+				size--;
 			} 
-
-			// Insert the new_node at last node 
-			last.next = new_node; 
-		} 
-
-		// Return the list by head 
-		return list; 
-	} 
-
-	// Method to print the LinkedList. 
-	public static void printList(LinkedList list) 
-	{ 
-		Node currNode = list.head; 
-
-		System.out.print("LinkedList: "); 
-
-		// Traverse through the LinkedList 
-		while (currNode != null) { 
-			// Print the data at current node 
-			System.out.print(currNode.data + " "); 
-
-			// Go to next node 
-			currNode = currNode.next; 
-		} 
-	} 
-
-	// **************MAIN METHOD************** 
-
-	// method to create a Singly linked list with n nodes 
-	public static void main(String[] args) 
-	{ 
-		/* Start with the empty list. */
-		LinkedList list = new LinkedList(); 
-
-		// 
-		// ******INSERTION****** 
-		// 
-
-		// Insert the values 
-		list = insert(list, 1); 
-		list = insert(list, 2); 
-		list = insert(list, 3); 
-		list = insert(list, 4); 
-		list = insert(list, 5); 
-		list = insert(list, 6); 
-		list = insert(list, 7); 
-		list = insert(list, 8); 
-
-		// Print the LinkedList 
-		printList(list); 
-	} 
-} 
+			else if (n.data.equalsIgnoreCase(key))
+			{
+				System.out.println("key found at last and deleting...");
+				counter++;
+				removeAt(counter);
+				size--;
+			} else 
+			{
+				System.out.println("key not found and inserting...");
+				size++;
+				removeAt(counter);
+			}
+			return size;
+		}
+    	public String returnListInString() 
+    	{
+			String str = "";
+			Node n = head;
+			while (n.next != null) {
+				str += n.data + ",";
+				n = n.next;
+			}
+			str += n.data;
+			return str;
+    }
+    	
+}
+ 
 
