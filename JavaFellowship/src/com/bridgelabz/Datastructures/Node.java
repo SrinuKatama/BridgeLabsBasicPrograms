@@ -1,9 +1,9 @@
 package com.bridgelabz.Datastructures;
 
-public class Node 
+public class Node <T>
 {
 
-	 Node next;
-	 String data;
+	 Node<T> next;
+	 T data;
 	 
 }

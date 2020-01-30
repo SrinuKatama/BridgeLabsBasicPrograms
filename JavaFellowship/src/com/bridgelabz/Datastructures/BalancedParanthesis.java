@@ -4,53 +4,42 @@ import java.util.Scanner;
 
 public class BalancedParanthesis 
 {
-	static boolean areParanthesis(char exp[])
+	public static void main(String args[])
 	{
-		 Stack st=new Stack();
-		 
-		 for(int i=0;i<=exp.length-1;i++)
-		 {
-			 if(exp[i]=='(')
-			 {
-				 st.push(exp[i]);
-			 }
-			 else if(exp[i]==')')
-			 {
-				 st.pop();
-			 }
-		 }
-		 
-		 if(st.isEmpty()==true)
-		 {
-			 return true;
-		 }
-		 else
-		 {
-			 return false;
-		 }
-		
-		
-	}
-
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter the string:");
+	String a=sc.next();
+	BalancedParanthesis b=new BalancedParanthesis();
+	BalancedParanthesis.check(a);
 	
-
-	public static void main(String[] args) 
-	{
-		Scanner sc=new Scanner(System.in);
-		System.out.println("plase enrter the string");
-		String s=sc.next();
-		
-		char exp[]=s.toCharArray()  ; 
-		   
-		if(areParanthesis(exp))
-		{
-			System.out.println("balanced");
-		}
-		else
-		{
-			System.out.println("Unbalanced");
-		}
-		
-     }
+	System.out.println(a+" = "+check(a));
+	}
+	
+	 public static boolean check(String a)
+	 {
+	 if (a.isEmpty())
+	 return true;
+	 
+	 Stack stack = new Stack();
+	 for (int i = 0; i < a.length(); i++)
+	 {
+	 char current = a.charAt(i);
+	 if (current == '{' || current == '(' || current == '[')
+	 {
+	 stack.push(current);
+	 }
+	 if (current == '}' || current == ')' || current == ']')
+	 {
+	 if (stack.isEmpty())
+	 return false;
+	 char last = (char) stack.peek();
+	 if (current == '}' && last == '{' || current == ')' && last == '(' || current == ']' && last == '[')
+	 stack.pop();
+	 else 
+	 return false;
+	 }
+	 }
+	 return stack.isEmpty()?true:false;
+	 }
 	
       }

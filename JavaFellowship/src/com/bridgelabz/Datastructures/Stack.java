@@ -1,54 +1,79 @@
 package com.bridgelabz.Datastructures;
 
-public class Stack 
+import java.util.List;
+
+public class Stack<T> 
 {
 	 
-	        int top=-1; 
-	        char items[] = new char[100]; 
+	        int top; 
+	        Object stack[] = new Object[6]; 
 	  
-	        void push(char x)  
+  public  void push(Object data)  
 	        { 
-	            if (top == 99)  
+	            if (isFull() ) 
 	            { 
 	                System.out.println("Stack full"); 
 	            }  
 	            else 
 	            { 
-	                items[++top] = x; 
+	                stack[top] = data;
+	                top++;
 	            } 
 	        } 
+  public void pushAll(List<T> list)
+  {
+	  for(int i=0;i<list.size();i++)
+	  {
+		  push(list.get(i));
+	  }
+  }
+  
 	  
-	        char pop()  
+	       public void  pop()  
 	        { 
-	            if (top == -1)  
+	            if (isEmpty())  
 	            { 
 	                System.out.println("Underflow error"); 
-	                return '\0'; 
+	                
 	            }  
 	            else 
 	            { 
-	                char element = items[top]; 
-	                top--; 
-	                return element; 
+	            	 top--;
+	                 stack[top]=0; 
+	                 
+	                
 	            } 
 	        } 
+	       
+	       public void show() {
+	   		for (Object num : stack) {
+	   			System.out.print(num + " ");
+	   		}
+	   		System.out.println();
+	       }
+	       
+	       public int size() 
+	       {
+	   		return top;
+	      	}
 	  
 	        boolean isEmpty()  
 	        { 
-	            return (top == -1) ? true : false; 
+	            return top == 0; 
 	        } 
+	        
+	        public boolean isFull() {
+
+	    		return top == stack.length;
+	    	}
 	        
 	        Object peek()
 	        {
-	        	char item=items[top];
-				return items;
+	        	T data;
+	    		data = (T) stack[top - 1];
+	    		return data;
 	        	
 	        }
-	        public  int size()
-	        {
-	        	int size=items.length;
-				return size;
-	        	
-	        }
+	        
 
 }

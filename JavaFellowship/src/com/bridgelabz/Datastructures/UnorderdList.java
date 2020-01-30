@@ -3,45 +3,42 @@ package com.bridgelabz.Datastructures;
 import java.io.IOException;
 import java.util.Scanner;
 
-import com.bridgelabz.utility.Utility;
+import com.bridgelabz.utility.DatastructuresUtility;
 
 public class UnorderdList 
 {
 
 	public static void main(String[] args) 
 	{ 
-		Scanner sc=new Scanner(System.in);
-		System.out.println("enter key string");
-		String s=sc.next();
-		Utility u= new Utility();
+		
+		DatastructuresUtility  u= new DatastructuresUtility ();
 		LinkedList list = new LinkedList();
 		
-		String[] strArr =null;
+		String[] strArray =null;
 
 		try {
-			strArr = (u.readFile("/home/admin1/Desktop/sri.txt").split(","));
+			strArray = (u.readFile("/home/admin1/Desktop/sri.txt").split(" "));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		int size=strArray.length;
 		
-		for(int i=0;i<strArr.length-1;i++)
+		for(int i=0;i<strArray.length;i++)
 		{
-			if(s!=strArr[i])
-			{
-				list.removeAt(i);
-				System.out.println("removed successfully");
-			}
-			else 
-			{
-				list.addAt(i, s);
-				System.out.println("added success fully");
-			}
+			
+				list.add(strArray[i]);
 		}
-		String s2=strArr.toString();
+		System.out.println(list.show());
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter key string");
+		String key=sc.next();
+		size = list.searchNode(key, size);
+		System.out.println(list.show());
+		
 		
 	     try {
-			u.writeFile("/home/admin1/Desktop/sri.txt",s2);
+			u.writeFile("/home/admin1/Desktop/sri.txt",list.returnListInString());
 		} catch (IOException e) {
 			
 	    e.printStackTrace();

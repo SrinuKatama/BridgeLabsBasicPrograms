@@ -14,7 +14,7 @@ public class LikedlistRunnable {
 		
 		
 	
-		 ll.removeAt(2);
+		 ll.deleteAt(2);
 		 
 		 
 		 
