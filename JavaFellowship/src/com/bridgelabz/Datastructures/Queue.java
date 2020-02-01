@@ -2,85 +2,114 @@ package com.bridgelabz.Datastructures;
 
 import java.util.Scanner;
 
-public class Queue 
+public class Queue <T>
 {
-	int rear=-1;
-	int front=0;
-	Object ar[]=new Object[100];
+	int rear;
+	int front;
+	Object queue[]=new Object[10];
+	int size;
+	int bankBalance=100000;
+	int counter=1;
+	
 	
 	 
-	void enque(int x)
+	public void enQueue(T data)
 	{
-		if(isFull())
-		{
-			System.out.println("Insertion not possible");
-		}
-		else
-		{
-			ar[rear++]=x;
-		}
-	}
-	void deque()
-	{
-		if(isEmpty())
-		{
-			System.out.println("Deletion not possible");
-		}
-		else
-		{
-			Object element=ar[front];
-			front++;
-		}
 		
+		if (isFull()) {
+			System.out.println("Queue is full removing first value");
+		}
+		else
+		{
+			queue[rear] = data;
+			rear = (rear + 1) % 5;
+			size = size + 1;
+			
+		}
 	}
+	public T deQueue()
+	{
+		@SuppressWarnings("unchecked")
+		T data = (T) queue[front];
+		if (!isEmpty()) {
+			front = (front + 1) % 5;
+			size = size - 1;
+		} else {
+			System.out.println("Queue is empty nothing to delete");
+		}
+
+		return data;
+
+	}
+	public void show() {
+		System.out.print("Element : ");
+		int length = queue.length;
+		int count = rear;
+		if (isFull()) {
+			while (length > 0) {
+				System.out.print(queue[count] + " ");
+				count++;
+				if (count == 5) {
+					count = 0;
+				}
+				length--;
+			}
+		} else {
+			for (int i = 0; i < size; i++) {
+				System.out.print(queue[(front + i) % 5] + " ");
+			}
+		}
+
+	}
+	public int getSize() {
+		return size;
+	}
+	
 	
 	boolean isFull()
 	{ 
-		return (rear==getSize()) ? true : false; 
+		return getSize()==5; 
 		
 	}
 	
 	boolean isEmpty()
 	{
-		return (front > rear) ? true : false;
+		return getSize()==0;
 	}
 	
-	    int getSize()
-	    {
-	    	return ar.length;
-	    }
 	    
-      public int service()
-      {
-    	   
-    	  Scanner sc =new Scanner(System.in);
-          int bankbalance=100000;
-          System.out.println("enter 1 withdraw,2 for deposit");
-          int choice = sc.nextInt();
-          switch (choice) {
-          
-         
-          case 1:  System.out.println("enter the withdraw amount");
-                   int withdrawammount=sc.nextInt();
-                   bankbalance=bankbalance-withdrawammount;
-                   System.out.println("Tq for your servises");
-                   withdrawammount=0;
-                   break;
-                   
-          case 2:  System.out.println("enter the deposit");
-                   int depositamount=sc.nextInt();
-                   bankbalance=bankbalance+depositamount;
-                   System.out.println("Tq for your   Services");
-                   depositamount=0;
-                   break;
-           
-          default: System.out.println("enter valid choice");
-          
-          }
-          return bankbalance;
-          
-      }
-   	
-      }
+	public void service() {
+		Scanner scanner =new Scanner(System.in);
+
+		System.out.println("Token number is : " + counter);
+		
+		int choice;
+		int amount=0;
+		System.out.println("press 1: for withdraw\npress 2: for deposit");
+		choice = scanner.nextInt();
+
+		switch (choice) {
+		case 1:
+			System.out.println("Enter amount to withdraw");
+			amount = scanner.nextInt();
+			bankBalance = bankBalance - amount;
+			System.out.println("Thank you for using service");
+			amount=0;
+			break;
+		case 2:
+			System.out.println("Enter amount to deposit");
+			amount = scanner.nextInt();
+			bankBalance = bankBalance + amount;
+			System.out.println("Thank you for using service");
+			amount=0;
+			break;
+		default:
+			System.out.println("Enter valid option");
+		}
+		counter++;
+		
+	}
+	
+}
         
 

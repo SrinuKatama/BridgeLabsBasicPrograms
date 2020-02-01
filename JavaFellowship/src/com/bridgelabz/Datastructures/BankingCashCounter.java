@@ -18,16 +18,17 @@ public class BankingCashCounter {
 	for (int i = 0; i < people; i++) 
 	{
 
-		q.enque(i);
+		q.enQueue(i);
 		q.service();
-		q.deque();
+		q.deQueue();
 	}
 	
 	if (q.isEmpty())
 	{
 		System.out.println("Queue is empty");
 	}
-	int bal=q.service();
-	System.out.println("Bank Closing balance is : " +bal );
+	
+	System.out.println("Bank Closing balance is : " +q.bankBalance );
+	sc.close();
 }
 }

@@ -140,7 +140,8 @@ public class LinkedList<T>
 			
 		}
 	
-	public boolean isEmpty() {
+	public boolean isEmpty() 
+	{
 		return head == null;
 	}
 	
@@ -158,8 +159,9 @@ public class LinkedList<T>
 			}
 			str += n.data;
 		}
-
+		System.out.println(str);
 		return str;
+		
 		
 		
 	}
@@ -249,6 +251,10 @@ public class LinkedList<T>
 
 		}
     	
-}
+    		 
+    		
+    	}
+    	
+
  
 

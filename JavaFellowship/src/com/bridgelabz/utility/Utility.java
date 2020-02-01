@@ -308,7 +308,8 @@ public static void gamblers()
 	int toss=0;
 	int amount=0;
 	
-	while(amount<goal) {	
+	while(amount<goal) 
+	{	
 		toss++;
 		System.out.println("Enter your betting number 1 to 6");
 		int b=sc.nextInt();
@@ -512,22 +513,20 @@ public static void insertion()
 	     }
 	     int item;
 	     int i=0,j=0;
-	     for( i=1;i<=ar.length-1;i++)
+	     for( i=1;i<=n-1;i++)
 	     {
 	    	 item=ar[i];
-	    	 for( j=i-1;j>=0;j--)
+	    	 for( j=i-1;j>=0 && ar[j]>item;j--)
 	    	 {
-	    		 if(ar[j]>item)
-	    		 {
 	    			ar[j+1]=ar[j]; 
-	    		 }
+	    		 
 	    	 }
 	    	 ar[j+1]=item;
 	     }
 	     System.out.println("After searching :");
-	     for(int k=0;k<=ar.length-1;k++)
+	     for(int k=0;k<=n-1;k++)
 	     {
-	    	System.out.print(ar[i]+" ");
+	    	System.out.print(ar[k]+" ");
 	     }    
 	         
 }
@@ -552,6 +551,7 @@ public static void merge(int ar[],int low,int mid,int high)
     int i = 0, j = 0; 
     
     int k = low; 
+    
     while (i < n1 && j < n2) 
     { 
         if (L[i] <= R[j]) 
@@ -847,7 +847,122 @@ public static void merge(int ar[],int low,int mid,int high)
 	   return "\n file is written";
   }
   
+  public static void tobin(int n)
+	{
+		int[] binnum=new int[1000];
+		int i=0;
+		while(n>0)
+		{
+			binnum[i]=n%2;
+			n=n/2;
+			i++;
+		}
+		for(int j=i-1;j>=0;j--)
+			System.out.print(binnum[j]);
+			
+	}
+  //.............DayofWeek...............
+  
+  public static int  dayofweek(int m,int y)
+	{
+		int y1,x,m0,d0;
+		y1=y-((14-m)/12);
+		x=y1+y1/4-y1/100+y1/400;
+		m0=m+(12*((14-m)/12)-2);
+		d0=(1+(x*31*m0)/12)%7;
+		int day=(int)d0;
+		return day;
+			
+	}
+  //...........Calender...............
+  
+  public static void calender(int month,int year)
+  {
+  int[][] monthCalender=new int[6][7];
+  // monthCalender[0][0]="Sun";monthCalender[0][1]="Mon";monthCalender[0][2]="Tues";monthCalender[0][3]="Wed";monthCalender[0][4]="Thu";monthCalender[0][5]="Fri";monthCalender[0][6]="Sat";
+  int len=Integer.valueOf(year).toString().length();
+  boolean leap=leapYear(year);
+  
+  if(month<1||month>12 || len!=4)
+	  
+  System.out.println("Invalid date");
+  else
+  {
+  int day=findDayOfTheWeek(month,year);
+  int daysinmonth=findNoOfDaysInMonth(month,leap);
+  int d=0,w=0;
+  while(d<daysinmonth)
+  {
+  if(d==0)    // for putting zeros in array
+  {
+  for(int i=0;i<7;i++)
+  {
+  if(i<day)    //for putting zeros in an array
+  monthCalender[w][i]=0;
+  else
+  monthCalender[w][i]=++d;     //Start the putting months days or putting numeric in first row;
+  } 
   }
+  else
+  {
+  int j=0;
+  while(j<7 && d<daysinmonth) //from second row onwards
+  {
+  monthCalender[w][j]=++d;      
+  j++;
+  }
+  }
+  w++;     //increasing the rows
+  }
+  //for printing purpose
+  System.out.println("Sun Mon Tue Wed Thu Fri Sat");
+  for(int i=0;i<6;i++)
+  {
+  for(int j=0;j<7;j++)
+  {
+  if(monthCalender[i][j]==0)
+  System.out.print("    ");
+  else
+  System.out.printf("%-4d",monthCalender[i][j]);
+  }
+  System.out.println();
+  }
+  }
+  }
+  
+  public static int findDayOfTheWeek(int month,int year)
+  {
+  int y0=0;
+  int  x=0;
+  int m0=0;
+  int d0=0;
+  y0 = year-(14 -month) / 12;
+  x=y0+y0/4-y0/100+y0/400;
+  m0=month+12*((14-month)/12)-2;
+  d0=(1+x+31*m0/12)%7;
+  System.out.println("Day="+d0);
+  return d0;
+  }
+  
+  public static int findNoOfDaysInMonth(int month,boolean leap)
+  {
+  if(leap==true && month==2)
+  return 29;
+  else if(leap==false && month==2)
+  return 28;
+  else if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+  return 31;
+  else
+  return 30;
+  }
+  
+public static boolean leapYear(int year)
+{
+	return ((year%4==0 && year%100 !=0) || year%400==0);
+}
+
+  
+}
   
   
   

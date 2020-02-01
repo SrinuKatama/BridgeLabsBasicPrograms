@@ -5,8 +5,8 @@ import java.util.List;
 public class Stack<T> 
 {
 	 
-	        int top; 
-	        Object stack[] = new Object[6]; 
+	        int top=0; 
+	        Object stack[] = new Object[1000]; 
 	  
   public  void push(Object data)  
 	        { 
@@ -16,8 +16,8 @@ public class Stack<T>
 	            }  
 	            else 
 	            { 
-	                stack[top] = data;
-	                top++;
+	                stack[top++] = data;
+	                
 	            } 
 	        } 
   public void pushAll(List<T> list)
@@ -45,8 +45,10 @@ public class Stack<T>
 	            } 
 	        } 
 	       
-	       public void show() {
-	   		for (Object num : stack) {
+	       public void show() 
+	       {
+	   		for (Object num : stack)
+	   		{
 	   			System.out.print(num + " ");
 	   		}
 	   		System.out.println();
@@ -59,15 +61,17 @@ public class Stack<T>
 	  
 	        boolean isEmpty()  
 	        { 
-	            return top == 0; 
+	            return top == -1; 
 	        } 
 	        
-	        public boolean isFull() {
+	        public boolean isFull() 
+	        {
 
 	    		return top == stack.length;
 	    	}
 	        
-	        Object peek()
+	        @SuppressWarnings("unchecked")
+			Object peek()
 	        {
 	        	T data;
 	    		data = (T) stack[top - 1];

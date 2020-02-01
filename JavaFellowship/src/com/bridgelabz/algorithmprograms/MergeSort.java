@@ -9,10 +9,12 @@ public class MergeSort {
 		int ar[]= {86,25,16,45,90};
 		int low=0,high=ar.length-1,mid=(low+high)/2;
 		Utility u=new Utility();
-		u.sort(ar,0,high);
+		
 		u.merge(ar,low,high,mid);
+		
 		System.out.println("\nSorted array"); 
         u.printArray(ar); 
+        
 		
 	}
 
