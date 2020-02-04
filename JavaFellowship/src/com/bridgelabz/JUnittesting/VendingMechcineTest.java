@@ -10,9 +10,18 @@ import com.bridgelabz.utility.Utility;
 class VendingMechcineTest {
 
 	@Test
-	void test()
-	{
-		assertEquals(3,Utility.vend(225));
-	}
 
+   void given225Amount_whenPassedToVending_thenShouldBeThree()
+	{
+     assertEquals(3,Utility.vend(225)); 
+     }
+
+     
+
+	@Test
+	void given1025Amount_whenPassedToVending_thenShouldBeThree()
+	{
+		assertEquals(3,Utility.vend(1025));
+	}
+	
 }

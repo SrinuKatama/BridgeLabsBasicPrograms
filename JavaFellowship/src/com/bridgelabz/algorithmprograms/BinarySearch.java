@@ -1,6 +1,6 @@
 package com.bridgelabz.algorithmprograms;
 
-import java.util.Scanner;
+
 
 import com.bridgelabz.utility.Utility;
 
@@ -9,31 +9,25 @@ public class BinarySearch
 
 	public static void main(String[] args)
 	{
-		Scanner sc =new Scanner(System.in);
-		System.out.println("enter size of the array");
+		System.out.println("enter array size");
+		int n=Utility.readInt();
+		String arr[]=new String[n+1];
 		
-		int n=sc.nextInt();
-		System.out.println("enter the array elements");
-		int ar[]=new int[n];
-		for(int i=0;i<ar.length;i++)
+		System.out.println("enter the strings");
+		for(int i=0;i<=n;i++)
 		{
-			ar[i]=sc.nextInt();
+		   arr[i]=Utility.readString();
 		}
-		System.out.println("plz enter key element");
-		int key=sc.nextInt();
+		System.out.println("enter the word to search");
+		String x=Utility.readString();
 		
-		Utility u=new Utility();
-		int k=u.binary(key,ar);
-		
-		if(k>0)
-		{
-			System.out.println("key element present");
+		int result = Utility.binary(arr, x); 
+		  
+	    if (result == -1) 
+	        System.out.println("Element not present"); 
+	    else
+	        System.out.println("Element found at "
+	                          + "index " + result); 
 		}
-		else
-		{
-			System.out.println("key element not present");
-		}
-
-	}
 
 }

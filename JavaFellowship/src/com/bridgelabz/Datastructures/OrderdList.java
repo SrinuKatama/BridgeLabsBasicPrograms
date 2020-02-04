@@ -1,9 +1,10 @@
 package com.bridgelabz.Datastructures;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.Arrays;
 
 import com.bridgelabz.utility.DatastructuresUtility;
+import com.bridgelabz.utility.Utility;
 
 public class OrderdList {
 
@@ -11,52 +12,41 @@ public class OrderdList {
 	public static void main(String[] args)
 	{
 
-		DatastructuresUtility  u= new DatastructuresUtility ();
-		LinkedList list = new LinkedList();
-		
-		String[] strArray =null;
+		DatastructuresUtility utility = new DatastructuresUtility();
+		LinkedList<String> list = new LinkedList<String>();
+		String[] strArr =null;
 
 		try {
-			strArray = (u.readFile("/home/admin1/Desktop/sri.txt").split(" "));
+			strArr = (utility.readFile("/home/admin1/Desktop/orderlist.txt").split(","));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int integerArr[]=new int[strArray.length];
-		for(int i=0;i<strArray.length;i++)
+		 Arrays.sort(strArr);
+		for (int i = 0; i < strArr.length; i++)
 		{
-			integerArr[i]=Integer.parseInt(strArray[i]);
-			list.add(integerArr);
+			
+			list.add(strArr[i]);
 		}
 		
-		int size=integerArr.length;
-		System.out.println(list.show());
-		System.out.println("\nsorting");
-		list.sort(size);
-		System.out.println(list.show());
-		System.out.println("enter the key to search in list:");
-		Scanner sc=new Scanner(System.in);
-		int key=sc.nextInt();
+		list.show();
 		
-        size = list.searchNode(key, size);
+		System.out.println("\nEnter key to search in list:");
 		
-		
-		
-		sc.close();
-		
-		System.out.println("\nSorting");
-		list.sort(size);
+		String key = Utility.readString();
+		int size=strArr.length;
+		list.searchNode(key, size);
+		list.show();
 
-		System.out.println(list.show());
+		//list.sort(size);
+
 		String str = list.returnListInString();
 		try {
-			u.writeFile(
-					"/home/admin1/Desktop/sri.txt",
-					str);
+			utility.writeFile("/home/admin1/Desktop/orderlist.txt",str);
+					
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
 	}
 
 }

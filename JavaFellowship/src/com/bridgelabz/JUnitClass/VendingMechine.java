@@ -6,10 +6,12 @@ public class VendingMechine {
 
 	public static void main(String[] args)
 	{
-		Utility u=new Utility();
-		     int count=u.vend(225);
-		     System.out.println(count);
-
+		
+		      Utility u=new Utility();
+		      System.out.println("please enter money:");
+		      int addmoney=Utility.readInt();
+		      Utility.vend(addmoney);
+		  
 	}
 
 }

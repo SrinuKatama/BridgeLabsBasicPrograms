@@ -21,6 +21,7 @@ public class BalancedParanthesis
 	 return true;
 	 
 	 Stack stack = new Stack();
+	 
 	 for (int i = 0; i < a.length(); i++)
 	 {
 	 char current = a.charAt(i);
@@ -41,5 +42,4 @@ public class BalancedParanthesis
 	 }
 	 return stack.isEmpty()?true:false;
 	 }
-	
       }

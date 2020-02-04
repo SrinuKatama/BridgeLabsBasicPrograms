@@ -6,14 +6,33 @@ public class MergeSort {
 
 	public static void main(String[] args)
 	{
-		int ar[]= {86,25,16,45,90};
-		int low=0,high=ar.length-1,mid=(low+high)/2;
-		Utility u=new Utility();
+		System.out.println("enter the size of an array:");
+		int n=Utility.readInt();
+	     System.out.println("plz enter array elements");
+	     int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			 arr[i]=Utility.readInt();
+		}
 		
-		u.merge(ar,low,high,mid);
-		
-		System.out.println("\nSorted array"); 
-        u.printArray(ar); 
+        int l=0,r=arr.length-1;
+        int m=r/2;
+        System.out.println("given array");
+        for (int i=0;i<arr.length;i++)
+        {
+        	System.out.print(arr[i]+" ");
+        }
+       int[] ar1 =Utility.merge(arr, l, m, r);
+        System.out.println( );
+        
+        //to print an array.
+        
+         System.out.println("After sorting:");
+             
+            for (int i=0; i<ar1.length; ++i) 
+                System.out.print(arr[i] + " "); 
+            System.out.println(); 
+        
         
 		
 	}

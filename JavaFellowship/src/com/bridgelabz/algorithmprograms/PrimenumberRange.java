@@ -6,9 +6,16 @@ public class PrimenumberRange {
 
 	public static void main(String[] args)
 	{
-		
-         Utility u=new Utility();
-             u.prime() ;
+		System.out.println("plz enter the range: ");
+		int n=Utility.readInt();
+         
+         for(int i=0;i<=n;i++)
+         {
+            if( Utility.isPrime(i)) 
+            {
+            	System.out.println(i);
+            }
+         }
 	}
 
 }

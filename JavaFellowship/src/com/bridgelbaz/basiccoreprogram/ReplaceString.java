@@ -6,9 +6,17 @@ public class ReplaceString
 {
 	public static void main(String[] args)
 	{
-		Utility util = new Utility();
-		String t=util.replace();
-		System.out.println("Hello "+t+", How are you?");
+		System.out.println("enter the String :");
+		String s=Utility.readString();
+		if(s.length()>3)
+		{
+		String  t=Utility.replace(s);
+		System.out.println(t);
+		}
+		else {
+			System.out.println("enter the String having more than length=2 ");
+		}
+		
 		
 		
 		

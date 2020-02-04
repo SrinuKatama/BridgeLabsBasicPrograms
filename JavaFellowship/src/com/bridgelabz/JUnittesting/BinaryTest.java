@@ -17,6 +17,17 @@ public class BinaryTest
 		assertEquals(100,Utility.Bin(4));
 		
 	}
+	
+	@Test
+	public void testFor10()
+	{
+		assertEquals(1010,Utility.Bin(10));
+	}
+	@Test
+	public void testFor11()
+	{
+		assertEquals(1010,Utility.Bin(11));
+	}
 
 	
 

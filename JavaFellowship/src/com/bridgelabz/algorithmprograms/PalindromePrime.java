@@ -14,13 +14,10 @@ public class PalindromePrime {
 				{
 					System.out.println("Prime Palidrome number is :"+i);
 				}
-				
 			}
-			
-					
 		}
-		System.out.println("No Prime palindrome no's are present");
-
+		System.out.println("No Prime palindrome no's are present after");
+	
 	}
 
 }
