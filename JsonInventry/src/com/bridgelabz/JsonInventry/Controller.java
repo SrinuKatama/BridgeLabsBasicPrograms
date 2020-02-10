@@ -1,11 +1,16 @@
 package com.bridgelabz.JsonInventry;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import com.bridgelabz.Utility.Utility;
 
@@ -20,44 +25,29 @@ public class Controller
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void addItems(File f) throws IOException
+	public static double grandTotal() throws  IOException, ParseException,ClassCastException
 	{
-		Model ob=setObj();
-		System.out.println("enter the no. of items:");
-		int n=Utility.readInt();
+		double inv=0;
 		
-		for(int i=0;i<n;i++)
+		JSONArray arr=Services.readfile();
+		System.out.println(arr);
+		System.out.println("enter product name to calulate");
+		String cal=Utility.bufferScanner();
+		for (int i = 0; i < arr.size(); i++) 
 		{
-			System.out.println("enter the name");
-			String name=Utility.bufferScanner();
-			ob.setName(name);
-			System.out.println("enter the weight");
-			float weight=Utility.readlong();
-			ob.setWeight(weight);
-			System.out.println("enter the prize");
-			float prize=Utility.readlong();
-			ob.setPrize(prize);
-			
-			JSONObject object=new JSONObject();
-			object.put("name", ob.getName());
-			object.put("weight", ob.getWeight());
-			object.put("prize", ob.getPrize());
-			array.add(object);
+			JSONObject inventory=(JSONObject) arr.get(i);
+			String name=inventory.get("name").toString();
+			if(cal.equalsIgnoreCase(name))
+			{
+				System.out.println("name="+name);
+				double weight=(double) inventory.get("weight");
+				double price=(double) inventory.get("prize");
+				inv=weight*price;
+			}
 		}
-		System.out.println(array.toJSONString());
-		PrintWriter pw=new PrintWriter("/home/admin1/Desktop/JSON.json");
-		pw.write(array.toJSONString());
-		pw.flush();
-		pw.close();
+		return inv;
 	}
-	public void createFile(String file) throws IOException
-	{
-		File f=new File(file);
-		FileWriter fw=new FileWriter(f);
-		fw.write("[]");
-		fw.flush();
-		fw.close();
-		
-	}
+
+	
 
 }
