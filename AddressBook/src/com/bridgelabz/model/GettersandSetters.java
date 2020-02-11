@@ -7,6 +7,7 @@ public class GettersandSetters
 	private long phoneno;
 	private String city;
 	private String state;
+	private String address;
 	public String getFirstname() {
 		return firstname;
 	}
@@ -43,14 +44,6 @@ public class GettersandSetters
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(long zipcode) {
-		this.zipcode = zipcode;
-	}
-	private String address;
-	private long zipcode;
 	
 	
 
