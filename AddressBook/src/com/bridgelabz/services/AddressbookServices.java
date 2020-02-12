@@ -44,7 +44,6 @@ public class AddressbookServices
 		 {
 			 File f=new File("/home/admin1/srinu/AddressBook.json");
 			 if(f.length()!=0)
-				 
 			 {
 			 FileReader fr=new FileReader(f); 
 		    JSONParser parser=new JSONParser();
@@ -77,6 +76,7 @@ public class AddressbookServices
 			ob.put("state",state);
 			ob.put("address",address );
 			array.add(ob);
+			
 			System.out.println(array.toJSONString());
 			PrintWriter pw=new PrintWriter("/home/admin1/srinu/AddressBook.json");
 			pw.write(array.toJSONString());
@@ -85,7 +85,7 @@ public class AddressbookServices
 			 }
 			 else
 			 {
-				 gs.setFirstname(s);
+				   gs.setFirstname(s);
 					System.out.println("enter last name :");
 					String lastname=Utility.bufferScanner();
 					gs.setLastname(lastname);
@@ -164,7 +164,7 @@ public class AddressbookServices
 		 {
 			    System.out.println("enter the firstname:");
 			    String fname1=Utility.bufferScanner();
-			     ob.put("firstname",fname );
+			     ob.put("firstname",fname1);
 			 
 			    System.out.println("enter last name :");
 				String lastname=Utility.bufferScanner();
@@ -208,7 +208,7 @@ public class AddressbookServices
 	public static boolean check(String first_name) throws IOException, ParseException
 	{
 		boolean flag=true;
-		JSONArray array=readfile();
+		JSONArray array=readfile1();
 		
 		if(array!=null)
 		{
