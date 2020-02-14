@@ -2,11 +2,19 @@ package com.bridgelabz.creational.factorydesign;
 
 public class Factorydetails 
 {
-	public static PC getComputer(String type,String RAM,String HDD,String CPU)
+	public static Computer getComputer(String type,String RAM,String HDD,String CPU)
 	{
-		if(type.equalsIgnoreCase("PC"))
+		if("PC".equalsIgnoreCase(type))
 		{
-			return new PC();
+			return new PC(RAM,HDD,CPU);
+		}
+		else if("Server".equalsIgnoreCase(type))
+		{
+			return new Server(RAM,HDD,CPU);
+		}
+		else
+		{
+			return new Laptop(RAM,HDD,CPU);
 		}
 	}
 

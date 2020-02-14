@@ -7,34 +7,30 @@ public class PC extends Computer
 	String CPU;
 	
 
-	public void setRAM(String rAM) {
-		this.RAM = rAM;
-	}
-
-	public void setHDD(String hDD) {
-		this.HDD = hDD;
-	}
-
-	public void setCPU(String cPU) {
-		this.CPU = cPU;
+	
+	public PC(String RAM, String HDD, String CPU) {
+		super();
+		this.RAM = RAM;
+		this.HDD = HDD;
+		this.CPU = CPU;
 	}
 
 	@Override
 	public String getRam() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.RAM;
 	}
 
 	@Override
 	public String getHDD() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.HDD;
 	}
 
 	@Override
 	public String getCPU() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.CPU;
 	}
   
 	
